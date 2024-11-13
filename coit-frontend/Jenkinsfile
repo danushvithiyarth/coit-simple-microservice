@@ -3,12 +3,14 @@ pipeline{
     stages{
         stage("Build"){
             steps{
-                sh 'cd coit-frontend && docker build -t amol1996/coit-backend1-48843:v1 -f Dockerfile-multistage .'
+               echo "build" 
+                //sh 'cd coit-frontend && docker build -t amol1996/coit-backend1-48843:v1 -f Dockerfile-multistage .'
             }
         }
         stage("Docker Push"){
             steps{
-                sh 'docker push amol1996/coit-backend1-48843:v1'
+                echo "Build"
+                //sh 'docker push amol1996/coit-backend1-48843:v1'
                 // sh "sudo apt-update && sudo apt-get install -y apache2"
             }
         }
