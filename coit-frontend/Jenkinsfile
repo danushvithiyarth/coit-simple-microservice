@@ -3,7 +3,6 @@ pipeline{
     stages{
         stage("Image"){
             steps{
-               docker image rm react-app:v-1
                docker build -t react-app:v-1 -f Dockerfile .
                docker images
             }
