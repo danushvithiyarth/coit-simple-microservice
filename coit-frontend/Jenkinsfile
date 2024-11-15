@@ -1,17 +1,17 @@
 pipeline{
     agent any
     stages{
-        stage("Build"){
+        stage("Image"){
             steps{
-               echo "build" 
-                //sh 'cd coit-frontend && docker build -t amol1996/coit-backend1-48843:v1 -f Dockerfile-multistage .'
+               docker image rm react-app:v-1
+               docker build -t react-app:v-1 -f Dockerfile .
+               docker images
             }
         }
-        stage("Docker Push"){
+        stage("Docker Container"){
             steps{
-                echo "Build"
-                //sh 'docker push amol1996/coit-backend1-48843:v1'
-                // sh "sudo apt-update && sudo apt-get install -y apache2"
+                docker compose up -d
+                docker ps
             }
         }
         // stage("Deploy"){
