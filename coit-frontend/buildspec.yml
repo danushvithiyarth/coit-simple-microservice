@@ -1,20 +1,25 @@
 version: 0.2
 
 phases:
-  install:
+  pre_build:
     commands:
-      - sudo apt-get update
-      - sudo apt-get install npm -y
-      - npm --version
+      - echo "Starting pre-build phase..."
+      - ls -la  # List files to debug current directory
   build:
     commands:
+      - echo "Navigating to the frontend directory..."
+      - cd coit-frontend
+      - echo "Checking for package.json in the frontend directory..."
+      - ls -la
+      - echo "Installing dependencies..."
       - npm install
+      - echo "Building the frontend application..."
       - npm run build
   post_build:
     commands:
-      - echo "Transfer the artifact..."
+      - echo "Copying build artifacts to S3..."
       - aws s3 cp build/ s3://codebuild-practice-danjim238/build/ --recursive
 artifacts:
   files:
     - '**/*'
-  base-directory: build
+  base-directory: coit-frontend/build
