@@ -3,18 +3,18 @@ version: 0.2
 phases:
   install:
     commands:
-       - sudo apt-get update
-       - sudo apt-get install npm -y
-       - npm --version
+      - sudo apt-get update
+      - sudo apt-get install npm -y
+      - npm --version
   build:
     commands:
-       - npm install 
-      # - command
+      - npm install
+      - npm run build
   post_build:
-     commands:
-        - echo "transfer the artifact..."
-        - aws s3 cp build/* s3://codebuild-practice-danjim238/build/
-      # - command
+    commands:
+      - echo "Transfer the artifact..."
+      - aws s3 cp build/ s3://codebuild-practice-danjim238/build/ --recursive
 artifacts:
   files:
-     - '**/*'
+    - '**/*'
+  base-directory: build
