@@ -4,16 +4,16 @@ phases:
   install:
     commands:
        - sudo apt-get update
-       - sudo apt-get install maven -y
-       - mvn --version
+       - sudo apt-get install npm -y
+       - npm --version
   build:
     commands:
-       - mvn clean install -Dskiptests
+       - npm install 
       # - command
   post_build:
      commands:
         - echo "transfer the artifact..."
-        - aws s3 cp target/*.jar s3://codebuild-practice-danjim238/app.jar
+        - aws s3 cp build/*.jar s3://codebuild-practice-danjim238/app.jar
       # - command
 artifacts:
   files:
