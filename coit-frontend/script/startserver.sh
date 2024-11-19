@@ -4,4 +4,5 @@
 cd /home/ubuntu/
 
 # Start the Java application
+npm install
 start npm
