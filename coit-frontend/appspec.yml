@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-  - source: /
+  - source: /coit-frontend
     destination: /home/ubuntu/
     overwrite: true
 permissions:
@@ -12,10 +12,10 @@ permissions:
     mode: 755
 hooks:
   AfterInstall:
-    - location: script/installationscript.sh
+    - location: coit-frontend/script/installationscript.sh
       timeout: 300
       runas: root
   ApplicationStart:
-    - location: script/startserver.sh
+    - location: coit-frontend/script/startserver.sh
       timeout: 300
       runas: root
