@@ -1,7 +1,7 @@
 #!/bin/bash
 
-sudo yum update
-sudo yum install nodejs npm -y
+sudo apt-get update
+sudo apt-get install nodejs npm -y
 
 #curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 #unzip awscliv2.zip
