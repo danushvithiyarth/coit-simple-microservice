@@ -11,11 +11,11 @@ permissions:
     group: root
     mode: 755
 hooks:
-  BeforeInstall:
+  AfterInstall:
     - location: script/installationscript.sh
       timeout: 300
       runas: root
-  AfterInstall:
+  ApplicationStart:
     - location: script/startserver.sh
       timeout: 300
       runas: root
