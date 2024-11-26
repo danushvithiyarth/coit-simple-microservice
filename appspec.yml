@@ -1,21 +1,35 @@
 version: 0.0
 os: linux
+
 files:
   - source: /coit-frontend
-    destination: /home/ubuntu/
+    destination: /home/ubuntu/coit-frontend
     overwrite: true
+
 permissions:
-  - object: /home/ubuntu/
+  - object: /home/ubuntu/coit-frontend
     pattern: "**"
     owner: root
     group: root
     mode: 755
+
 hooks:
-  AfterInstall:
-    - location: coit-frontend/script/installationscript.sh
+  BeforeInstall:
+    - location: coit-frontend/scripts/ensure_codedeploy_agent.sh
       timeout: 300
       runas: root
+
+  AfterInstall:
+    - location: coit-frontend/scripts/installationscript.sh
+      timeout: 300
+      runas: root
+
   ApplicationStart:
-    - location: coit-frontend/script/startserver.sh
+    - location: coit-frontend/scripts/startserver.sh
+      timeout: 300
+      runas: root
+
+  ValidateService:
+    - location: coit-frontend/scripts/validate_service.sh
       timeout: 300
       runas: root
