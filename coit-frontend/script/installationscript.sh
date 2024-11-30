@@ -8,4 +8,6 @@ unzip awscliv2.zip
 sudo ./aws/install
 
 
-aws s3 cp s3://codebuild-practice-danjim238/build/ /home/ubuntu/build/ --recursive
+aws s3 cp s3://codebuild-practice-danjim238/build/* /home/ubuntu/build/ --recursive
+ls -l
+pwd
