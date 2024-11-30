@@ -14,11 +14,6 @@ permissions:
     mode: 755
 
 hooks:
-  BeforeInstall:
-    - location: coit-frontend/scripts/ensure_codedeploy_agent.sh
-      timeout: 300
-      runas: root
-
   AfterInstall:
     - location: coit-frontend/scripts/installationscript.sh
       timeout: 300
