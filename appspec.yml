@@ -2,8 +2,8 @@ version: 0.0
 os: linux
 
 files:
-  - source: /coit-frontend
-    destination: /home/ubuntu/coit-frontend
+  - source: /
+    destination: /home/ubuntu/
     overwrite: true
 
 permissions:
