@@ -7,6 +7,7 @@ pipeline {
     stages {
        stage("Install dependancy") {
           steps {
+              sh 'pwd'
               sh 'npm install --no-audit'
           }
        }   
