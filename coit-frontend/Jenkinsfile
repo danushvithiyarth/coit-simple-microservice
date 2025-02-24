@@ -11,7 +11,29 @@ pipeline {
                   sh 'npm install --no-audit'
             }
           }
-       }   
+       }
+       stage("Dependancy Check") {
+          paraller { 
+             stage ("Npm dependancy check") { 
+              steps {
+                dir('coit-frontend/') {
+                   sh 'npm audit --audit-level=high,critical'
+              }
+             }
+            }
+            stage ("OWASPdependancy check") { 
+              steps {
+                dir('coit-frontend/') {
+                   sh 'dependencyCheck additionalArguments: '
+                    --scan /var/lib/jenkins/workspace/Multi-practice_develop/coit-frontend \
+                    --out reports \
+                    --format HTML,JSON', odcInstallation: 'OWASP-12.1.0'
+'
+              }
+             }
+            }
+          }
+       }  
     }
 }
 
