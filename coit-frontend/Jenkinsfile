@@ -18,7 +18,7 @@ pipeline {
                 stage("Npm Dependency Check") { 
                     steps {
                         dir('coit-frontend/') {
-                            sh 'npm audit --audit-level=high --audit-level=critical'
+                            sh 'npm audit' //--audit-level=high --audit-level=critical
                         }
                     }
                 }
