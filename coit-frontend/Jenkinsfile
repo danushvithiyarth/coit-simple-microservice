@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tool{
+        nodejs 'npm-23.8.0'
+    }
     
     stages {
        stage("Install dependancy") {
