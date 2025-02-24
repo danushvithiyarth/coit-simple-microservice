@@ -7,8 +7,9 @@ pipeline {
     stages {
        stage("Install dependancy") {
           steps {
-              sh 'cd /var/lib/jenkins/workspace/Multi-practice_develop/coit-frontend/'
-              sh 'npm install --no-audit'
+              dir('coit-frontend/') {
+                  sh 'npm install --no-audit'
+            }
           }
        }   
     }
